@@ -1,0 +1,28 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    {% comment %} <meta content="text/html;charset=utf-8" http-equiv="Content-Type"> {% endcomment %}
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Расчет стоимости наконечников и лепестков</title>
+
+</head>
+<body>
+
+        <form action="{% url 'search_results' %}" method="get">
+            <p>
+                <label for="calculation">Текст запроса</label><br/>
+                <textarea id="calculation" name="search" placeholder="Написать запрос..."cols="60" rows="10"></textarea>
+            </p>
+            <p>
+                <input type="submit" value="Расчет" />
+            </p>        
+        </form>
+        {% comment %} <p><img src="{% static 'baza/images/12.jpg' %}"></p>
+        <p><img src="{% static 'baza/media/12.jpg' %}"></p> {% endcomment %}
+
+        {% block content %}
+        {% endblock %}
+
+</body>
+</html>

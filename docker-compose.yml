@@ -1,0 +1,44 @@
+version: '3.1'
+
+services:
+  web:
+    build:
+      context: ./
+      dockerfile: dockerfile
+    command: gunicorn buz.wsgi:application --bind 0.0.0.0:8000
+    expose:
+      - "80"
+    volumes:
+      - static_volume:/home/app/web/static
+      - media_volume:/home/app/web/media
+    env_file:
+      - ./.env
+    depends_on:
+      - db
+  db:
+    image: postgres:12.0-alpine
+    ports:
+      - 5432:5432
+    expose:
+      - "5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+    env_file:
+      - ./.env.db
+  nginx:
+    build: ./nginx
+    ports:
+      - 80:80
+      - 5432:5432
+    volumes:
+      - static_volume:/home/app/web/static
+      - media_volume:/home/app/web/media
+    depends_on:
+      - web
+
+
+
+volumes:
+  postgres_data:
+  static_volume:
+  media_volume:

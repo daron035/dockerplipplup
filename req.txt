@@ -1,0 +1,12 @@
+asgiref==3.4.1
+Django==3.2.7
+Pillow==8.3.2
+pycodestyle==2.8.0
+pytz==2021.1
+sqlparse==0.4.2
+toml==0.10.2
+gunicorn
+psycopg2-binary
+environ
+django-environ
+toml
