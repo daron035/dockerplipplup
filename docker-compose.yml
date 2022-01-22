@@ -29,7 +29,6 @@ services:
     build: ./nginx
     ports:
       - 80:80
-      - 5432:5432
     volumes:
       - static_volume:/home/app/web/static
       - media_volume:/home/app/web/media
